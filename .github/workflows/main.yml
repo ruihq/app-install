@@ -21,7 +21,7 @@ jobs:
           distribution: 'adopt'  # Use 'adopt' distribution for OpenJDK
 
       - name: Build with Gradle
-        run: gradlew.bat assembleDebug  # Use gradlew.bat for Windows
+        run: .\gradlew.bat assembleDebug  # Use .\gradlew.bat for Windows
 
       - name: Upload APK as an artifact
         uses: actions/upload-artifact@v2
