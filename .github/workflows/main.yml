@@ -23,7 +23,9 @@ jobs:
           distribution: 'adopt'  # Use 'adopt' distribution for OpenJDK
 
       - name: Build with Gradle
-        run: ./gradlew assembleDebug
+        run: |
+            chmod +x gradlew
+            ./gradlew assembleDebug
 
       - name: Upload APK as an artifact
         uses: actions/upload-artifact@v2
