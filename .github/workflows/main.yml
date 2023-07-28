@@ -1,5 +1,3 @@
-# when continuous integration
-
 name: Android Build
 
 on:
@@ -10,7 +8,7 @@ on:
 jobs:
   build:
     name: Build and Publish APK
-    runs-on: ubuntu-latest
+    runs-on: windows-latest  # Use the Windows runner
 
     steps:
       - name: Checkout code
@@ -23,13 +21,10 @@ jobs:
           distribution: 'adopt'  # Use 'adopt' distribution for OpenJDK
 
       - name: Build with Gradle
-        run: |
-            chmod +x gradlew
-            ./gradlew assembleDebug
+        run: gradlew.bat assembleDebug  # Use gradlew.bat for Windows
 
       - name: Upload APK as an artifact
         uses: actions/upload-artifact@v2
         with:
           name: app-debug
           path: app/build/outputs/apk/debug/app-debug.apk
-
